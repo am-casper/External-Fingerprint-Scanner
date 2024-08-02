@@ -19,12 +19,12 @@ import java.io.IOException
 data class User(val userId: Int, val id: Int, val title: String, val completed: Boolean)
 
 class MainActivity: FlutterActivity() {
-  private val CHANNEL = "sample.api.call"
+  private val CHANNEL = "sample.api.call" // Change this to your channel name
 
   override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
     super.configureFlutterEngine(flutterEngine)
     MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler { call, result ->
-      if (call.method == "getApiResponse") {
+      if (call.method == "getApiResponse") { // Change this to your method name
           getApiResponse { apiResponse ->
               if (apiResponse != "-1") {
                   result.success(apiResponse)
@@ -39,6 +39,7 @@ class MainActivity: FlutterActivity() {
 }
 
   private fun getApiResponse(callback: (String) -> Unit) {
+    // will Replace this with out API call
     val client = OkHttpClient()
     val url = "https://jsonplaceholder.typicode.com/todos/1"
     val request = Request.Builder()

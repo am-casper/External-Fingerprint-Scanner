@@ -32,14 +32,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static const platform = MethodChannel('sample.api.call');
+  static const platform = MethodChannel('sample.api.call'); /// this [CHANNEWL] should be same as in the android/app/src/main/kotlin/com/example/ext_fingerprint/MainActivity.kt
 
   String _apiResponse = '';
 
   Future<void> _getAPIResponse() async {
     String apiResponse;
     try {
-      final result = await platform.invokeMethod('getApiResponse');
+      final result = await platform.invokeMethod('getApiResponse'); /// this [METHOD] should be same as in the MainActivity.kt
       apiResponse = 'Title from API Response: $result.';
     } on PlatformException catch (e) {
       apiResponse = "Failed to get API Response: '${e.message}'.";
